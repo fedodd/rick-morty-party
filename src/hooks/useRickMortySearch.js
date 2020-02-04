@@ -9,7 +9,7 @@ function useRickMortySearch(target) {
 
   const RICK_MORTY_SEARCH = gql`
   query {
-    characters(filter: { name: "rick" }) {
+    characters(filter: { name: "${target}" }) {
       info {
         count
       }

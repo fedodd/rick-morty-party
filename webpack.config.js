@@ -20,7 +20,7 @@ const config = {
         exclude: /node_modules/
       },
       {
-        test: /\.css$/,
+        test: /\.(css|pcss)$/,
         use: [
           'style-loader',
           {
@@ -31,10 +31,10 @@ const config = {
           },
           'postcss-loader'
         ],
-        exclude: /\.module\.css$/
+        exclude: /\.module\.(css|pcss)$/
       },
       {
-        test: /\.css$/,
+        test: /\.(css|pcss)$/,
         use: [
           'style-loader',
           {
@@ -46,7 +46,7 @@ const config = {
           },
           'postcss-loader'
         ],
-        include: /\.module\.css$/
+        include: /\.module\.(css|pcss)$/
       }
     ]
   },
