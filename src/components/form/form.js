@@ -36,7 +36,7 @@ const form = () => {
   function handleOnChange(value) {
     setValue(value);
   }
-  console.log(data);
+  console.log(result);
 
   return (
     <div onClick={() => handleOnChange('rick')}>
