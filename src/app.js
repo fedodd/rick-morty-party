@@ -2,14 +2,19 @@
 import React from "react";
 import { hot } from 'react-hot-loader/root';
 import Form from "./components/form/form";
-import Example from "./components/example";
+import Results from "./components/results/results";
+import Party from "./components/party/party";
+
 
 class App extends React.Component {
+
   render() {
     const { name } = this.props;
-    return (<div>
-      <Form />
-      {/* <Example /> */}
+    return (
+      <div>
+        <Form />
+        <Results />
+        <Party />
       </div>);
   }
 }
