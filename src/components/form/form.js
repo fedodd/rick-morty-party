@@ -29,6 +29,7 @@ function Form(props) {
       onSubmit={event => event.preventDefault()}
       className={classes.form}>
       <input
+        className={classes.input}
         type="text"
         name="name"
         onChange={(e) => handleChange(e.target.value)}
