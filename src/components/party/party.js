@@ -1,6 +1,6 @@
 import React from 'react';
 
-function party(props) {
+function Party(props) {
   return (
     <div>
       party
@@ -8,4 +8,4 @@ function party(props) {
   );
 }
 
-export default party;
+export default Party;

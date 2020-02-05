@@ -1,22 +1,25 @@
 
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 import Form from "./components/form/form";
 import Results from "./components/results/results";
 import Party from "./components/party/party";
 
 
-class App extends React.Component {
+const App = () => {
 
-  render() {
-    const { name } = this.props;
-    return (
+  const [requestName, setRequestName] = useState('summ');
+  const [selectedPerson, setSelectedPerson] = useState();
+
+  return (
       <div>
-        <Form />
-        <Results />
-        <Party />
+        <Form handleChangeInput={setRequestName}/>
+        <Results
+          requestName={requestName}
+          handleSelectPerson={setSelectedPerson}/>
+        <Party
+          person={selectedPerson}/>
       </div>);
-  }
-}
+};
 
 export default hot(App);

@@ -1,15 +1,9 @@
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
-
-
-
-function useRickMortySearch(target) {
-  console.log('target', target);
-
-  const RICK_MORTY_SEARCH = gql`
-  query {
-    characters(filter: { name: "${target}" }) {
+const RICK_MORTY_SEARCH = gql`
+  query Name($target: String) {
+    characters(filter: { name: $target}) {
       info {
         count
       }
@@ -22,7 +16,11 @@ function useRickMortySearch(target) {
   }
 `;
 
-  const { loading, error, data } = useQuery(RICK_MORTY_SEARCH);
+function useRickMortySearch(target) {
+  console.log('target', target);
+  const { loading, error, data } = useQuery(RICK_MORTY_SEARCH, {
+    variables: { target },
+  });
   console.log('loading, error, data', loading, error, data);
 
   return {loading, error, data };

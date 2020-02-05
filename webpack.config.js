@@ -4,83 +4,79 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 const config = {
-  entry: [
-    'react-hot-loader/patch',
-    './src/index.js'
-  ],
+  entry: ["react-hot-loader/patch", "./src/index.js"],
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash].js'
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].[contenthash].js"
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        use: 'babel-loader',
+        use: "babel-loader",
         exclude: /node_modules/
       },
       {
-        test: /\.(css|pcss)$/,
+        test: /\.pcss$/,
         use: [
-          'style-loader',
+          "style-loader",
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               importLoaders: 1
             }
           },
-          'postcss-loader'
+          "postcss-loader"
         ],
-        exclude: /\.module\.(css|pcss)$/
+        exclude: /\.pcss$/
       },
       {
-        test: /\.(css|pcss)$/,
+        test: /\.pcss$/,
         use: [
-          'style-loader',
+          "style-loader",
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               importLoaders: 1,
               modules: true
             }
           },
-          'postcss-loader'
+          "postcss-loader"
         ],
-        include: /\.module\.(css|pcss)$/
+        include: /\.pcss$/
       }
     ]
   },
   resolve: {
-    extensions: [
-      '.js',
-      '.jsx'
-    ],
+    extensions: [".js", ".jsx"],
     alias: {
-      'react-dom': '@hot-loader/react-dom'
+      "react-dom": "@hot-loader/react-dom"
     }
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: "./dist"
   },
   plugins: [
     new HtmlWebpackPlugin({
-        template: require('html-webpack-template'),
-        inject: false,
-        appMountId: 'app',
-        filename: 'index.html',
-        title: 'Rick & Morty Party',
-        links: ['https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'],
-      }),
-    new LodashModuleReplacementPlugin
+      template: require("html-webpack-template"),
+      inject: false,
+      appMountId: "app",
+      filename: "index.html",
+      title: "Rick & Morty Party",
+      links: [
+        "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      ]
+    }),
+    new LodashModuleReplacementPlugin()
   ],
   optimization: {
-    runtimeChunk: 'single',
+    runtimeChunk: "single",
     splitChunks: {
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all'
+          name: "vendors",
+          chunks: "all"
         }
       }
     }

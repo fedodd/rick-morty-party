@@ -1,9 +1,31 @@
 import React from 'react';
 import useRickMortySearch from "../../hooks/useRickMortySearch.js";
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
 
-function results(props) {
+const RICK_MORTY_SEARCH = gql`
+  query Name($targetName: String) {
+    characters(filter: { name: $targetName}) {
+      info {
+        count
+      }
+      results {
+        id,
+        name,
+        image
+      }
+    }
+  }
+`;
 
-  const {loading, error, data} = useRickMortySearch('mort');
+function Results(props) {
+
+  console.log('results name', props.requestName);
+  const targetName = props.requestName;
+  const { loading, error, data } = useQuery(RICK_MORTY_SEARCH, {
+    variables: { targetName },
+  });
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;
 
@@ -24,4 +46,4 @@ function results(props) {
 
 }
 
-export default results;
+export default Results;

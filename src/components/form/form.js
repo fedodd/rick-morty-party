@@ -1,27 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import classes from "./form.pcss";
+//import useRickMortySearch from "./../../hooks/useRickMortySearch";
 
 
-const form = () => {
+function Form(props) {
 
   const [value, setValue] = useState('');
   useEffect(() => {
-    // Обновляем заголовок документа с помощью API браузера
-    //document.title = `Вы - ${value}`;
-  }, [value]);
+    console.log('useEffect', value, props);
+    props.handleChangeInput(value);
+  });
 
-
-  function handleOnChange(value) {
-    setValue(value);
+  function useOnChange(value) {
+    console.log('useChange', value);
+    if (value.length > 2) {
+      setValue(value);
+    }
   }
 
   return (
-    <div
-      className={classes.form}
-      onClick={() => handleOnChange('rick')}>
-      i am form with value: {value}
-    </div>
+    <form
+      className={classes.form}>
+      <input
+        type="text"
+        name="name"
+        onChange={(e) => useOnChange(e.target.value)}
+        required >
+      </input>
+    </form>
   );
 };
 
-export default form;
+export default Form;
