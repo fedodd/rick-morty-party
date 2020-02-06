@@ -3,6 +3,25 @@
   width: 180px;
   height: 220px;
   position: relative;
+  display: inline-block;
+
+  &.is__alt {
+    background: #dadada;
+  }
+
+  & h3 {
+    position: absolute;
+    width: 100%;
+    bottom: 30px;
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 28px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
 }
 
 .cardImg {
@@ -17,9 +36,43 @@
   box-sizing: border-box;
   width: 30px;
   height: 30px;
-  background: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 50%;
 
   &:hover {
     cursor: pointer;
   }
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 50%;
+}
+
+.close:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.close:before,
+.close:after {
+  position: absolute;
+  top: 8px;
+  left: 14px;
+  width: 2px;
+  height: 14px;
+  background-color: black;
+  content: " ";
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
 }

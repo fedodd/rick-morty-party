@@ -10,7 +10,7 @@ function Form(props) {
   // throttle - send value to app component after 300 ms. listen prev value with useRef
   const throttled = useRef(_.throttle((newValue) => {
     props.handleChangeInput(newValue);
-  }, 3000))
+  }, 300))
 
 
   useEffect(() => {
