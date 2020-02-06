@@ -21,6 +21,7 @@
     "gh-pages": "^2.2.0",
     "graphql": "^14.6.0",
     "lodash": "^4.17.15",
+    "normalize.css": "^8.0.1",
     "postcss-conditionals": "^2.1.0",
     "postcss-mixins": "^6.2.3",
     "postcss-nested": "^4.2.1",

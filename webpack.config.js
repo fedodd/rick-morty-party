@@ -23,27 +23,16 @@ const config = {
           {
             loader: "css-loader",
             options: {
-              importLoaders: 1
-            }
-          },
-          "postcss-loader"
-        ],
-        exclude: /\.pcss$/
-      },
-      {
-        test: /\.pcss$/,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: {
               importLoaders: 1,
               modules: true
             }
           },
           "postcss-loader"
-        ],
-        include: /\.pcss$/
+        ]
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader?name=./fonts/[name].[ext]'
       }
     ]
   },
@@ -55,12 +44,7 @@ const config = {
   },
   devServer: {
     contentBase: "./dist",
-    headers: {
-      "Access-Control-Allow-Origin": "http://localhost:8080",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers":
-        "X-Requested-With, content-type, Authorization"
-    }
+
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -69,9 +53,6 @@ const config = {
       appMountId: "app",
       filename: "index.html",
       title: "Rick & Morty Party",
-      links: [
-        "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-      ]
     }),
     new LodashModuleReplacementPlugin()
   ],
