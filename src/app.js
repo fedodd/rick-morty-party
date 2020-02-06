@@ -9,7 +9,7 @@ import classes from "./app.pcss";
 const App = () => {
 
   const [requestName, setRequestName] = useState('');
-  const [selectedPerson, setSelectedPerson] = useState();
+  const [selectedPerson, setSelectedPerson] = useState([]);
 
   return (
       <div className={classes.App}>
