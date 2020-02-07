@@ -9,16 +9,14 @@ function card(props) {
 
   return (
     <div
+      onClick={()=>props.onPick(props.id)}
       className={props.isParty ? [classes.card, classes.is__alt].join(' ') : classes.card}>
-      {/* <h3>{props.name}</h3> */}
       {title}
       <img className={classes.cardImg} src={props.image}></img>
-      {/* <span
-        className={classes.close}
-        onClick={() => props.onClose(props.id)}></span> */}
+      {/* make inline style of material icon size same as in figma */}
       <CloseIcon
-        fontSize="medium"
         className={classes.cardClose}
+        style={{'width': '30px', 'height': '30px', 'padding': '6px'}}
         onClick={() => props.onClose(props.id)}/>
     </div>
   );

@@ -38,6 +38,10 @@ function Results(props) {
     if (!deletedPersonsID.includes(id)) setDeletedPersonsID([...deletedPersonsID, id])
   }
 
+  // const onPickHandler = (id) => {
+
+  // }
+
   //api request
   const { loading, error, data } = useRickMortySearch(props.requestName);
   if (loading) {
@@ -52,6 +56,7 @@ function Results(props) {
         const card = <Card
         key={elem.id}
         onClose={onCloseHandler}
+        onPick={handleSelectPerson}
         {...elem} />;
 
         return [...acc, card]
