@@ -9,16 +9,37 @@ import classes from "./app.pcss";
 const App = () => {
 
   const [requestName, setRequestName] = useState('');
-  const [selectedPerson, setSelectedPerson] = useState([]);
+  const [selectedRick, setRick] = useState({});
+  const [selectedMorty, setMorty] = useState({});
+
+  const handlePickPerson = (person) => {
+    if (person.name.toLowerCase().includes('rick')) {
+      setRick(person);
+    } else if (person.name.toLowerCase().includes('morty')) {
+      setMorty(person);
+    }
+  }
+
+  const handleClosePartyPerson = (person) => {
+
+    if (person === 'Rick') {
+      setRick({});
+    } else if (person === 'Morty') {
+      setMorty({});
+    }
+  }
 
   return (
       <div className={classes.App}>
         <Form handleChangeInput={setRequestName}/>
         <Results
           requestName={requestName}
-          handleSelectPerson={setSelectedPerson}/>
+          onPickPerson={handlePickPerson}/>
         <Party
-          person={selectedPerson}/>
+          selectedRick={selectedRick}
+          selectedMorty={selectedMorty}
+          onCloseHandler={handleClosePartyPerson}
+          />
       </div>);
 };
 

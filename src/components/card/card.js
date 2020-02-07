@@ -7,17 +7,20 @@ function card(props) {
   let title = null;
   if (props.isParty) title = <h3>{props.title}</h3>;
 
+
   return (
-    <div
-      onClick={()=>props.onPick(props.id)}
-      className={props.isParty ? [classes.card, classes.is__alt].join(' ') : classes.card}>
-      {title}
-      <img className={classes.cardImg} src={props.image}></img>
+    <div className={props.isParty ? [classes.card, classes.is__alt].join(' ') : classes.card}>
+      <div onClick={props.isParty ? null : () => props.onPick(props.data)}>
+        {title}
+        <img
+          className={classes.cardImg}
+          src={props.data.image}></img>
+      </div>
       {/* make inline style of material icon size same as in figma */}
       <CloseIcon
         className={classes.cardClose}
         style={{'width': '30px', 'height': '30px', 'padding': '6px'}}
-        onClick={() => props.onClose(props.id)}/>
+        onClick={() => props.onClose(props.data.id)}/>
     </div>
   );
 }

@@ -30,17 +30,12 @@ function Results(props) {
     return result;
   }
 
-  // const [requestName, setrequestName] = useState(props.);
-
-
   const [deletedPersonsID, setDeletedPersonsID] = useState([]);
   const onCloseHandler = (id) => {
+    console.log('close!');
+
     if (!deletedPersonsID.includes(id)) setDeletedPersonsID([...deletedPersonsID, id])
   }
-
-  // const onPickHandler = (id) => {
-
-  // }
 
   //api request
   const { loading, error, data } = useRickMortySearch(props.requestName);
@@ -56,8 +51,8 @@ function Results(props) {
         const card = <Card
         key={elem.id}
         onClose={onCloseHandler}
-        onPick={handleSelectPerson}
-        {...elem} />;
+        onPick={props.onPickPerson}
+        data={elem} />;
 
         return [...acc, card]
       }

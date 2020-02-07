@@ -3,23 +3,22 @@ import Card from "../card/card";
 import classes from "./party.pcss";
 
 function Party(props) {
-  const onCloseHandler = () => {
-    console.log('close party!');
-  }
 
   return (
     <div className={classes.party}>
       <h2>party</h2>
       <div className={classes.wrapper}>
         <Card
-          onClose={onCloseHandler}
+          onClose={() => props.onCloseHandler('Rick')}
           addedClassName="__party"
           title="Rick"
+          data={props.selectedRick}
           isParty/>
         <Card
-          onClose={onCloseHandler}
+          onClose={() => props.onCloseHandler('Morty')}
           addedClassName="__party"
           title="Morty"
+          data={props.selectedMorty}
           isParty/>
       </div>
     </div>
