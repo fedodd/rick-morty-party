@@ -13,9 +13,10 @@ const App = () => {
   const [selectedMorty, setMorty] = useState({});
 
   const handlePickPerson = (person) => {
-    if (person.name.toLowerCase().includes('rick')) {
+    // i suggest to check 'rick' with string.toLowerCase().includes('rick'), cause maybe there will be 'RICK' o something like this in the future. same with 'Morty'.
+    if (person.name.includes('Rick')) {
       setRick(person);
-    } else if (person.name.toLowerCase().includes('morty')) {
+    } else if (person.name.includes('Morty')) {
       setMorty(person);
     }
   }

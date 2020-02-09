@@ -7,7 +7,7 @@ function Party(props) {
   return (
     <div className={classes.party}>
       <h2>party</h2>
-      <div className={classes.wrapper}>
+      <div className={classes.partyWrapper}>
         <Card
           onClose={() => props.onCloseHandler('Rick')}
           addedClassName="__party"

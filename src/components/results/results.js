@@ -7,24 +7,12 @@ import _ from 'lodash';
 import Card from "../card/card";
 import classes from './results.pcss'
 
-const RICK_MORTY_SEARCH = gql`
-  query Name($targetName: String) {
-    characters(filter: { name: $targetName}) {
-      info {
-        count
-      }
-      results {
-        id,
-        name,
-        image
-      }
-    }
-  }
-`;
+
 
 function Results(props) {
 
   let result = <p>Search results will be shown here.</p>
+  let pagination = null;
   //if request name shorteeer then 2 break api request
   if (props.requestName.length <= 2) {
     return result;
@@ -58,6 +46,8 @@ function Results(props) {
       }
       return acc;
     }, []);
+
+    // if data.characters.info.pages > 1
 
   }
 

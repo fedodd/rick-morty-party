@@ -10,9 +10,12 @@ function card(props) {
 
   return (
     <div className={props.isParty ? [classes.card, classes.is__alt].join(' ') : classes.card}>
-      <div onClick={props.isParty ? null : () => props.onPick(props.data)}>
+      <div
+        className={classes.cardImgBox}
+        onClick={props.isParty ? null : () => props.onPick(props.data)}>
         {title}
         <img
+          alt=""
           className={classes.cardImg}
           src={props.data.image}></img>
       </div>

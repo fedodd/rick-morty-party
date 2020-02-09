@@ -1,11 +1,20 @@
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
+
+// const queryVariables = {
+//   "targetName": "Rick",
+//   "page": "2"
+// }
+
 const RICK_MORTY_SEARCH = gql`
-  query Name($targetName: String) {
-    characters(filter: { name: $targetName}) {
+  query Name($targetName: String!, $targetPage: String!) {
+    characters(page: $targetPage, filter: { name: $targetName}) {
       info {
-        count
+        count,
+        pages,
+        next,
+        prev
       }
       results {
         id,
@@ -17,8 +26,9 @@ const RICK_MORTY_SEARCH = gql`
 `;
 
 function useRickMortySearch(targetName) {
+  const targetPage = '2';
   const { loading, error, data } = useQuery(RICK_MORTY_SEARCH, {
-    variables: { targetName },
+    variables: { targetName, targetPage },
   });
   //console.log('loading, error, data', loading, error, data);
 
