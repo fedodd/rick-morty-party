@@ -1,5 +1,5 @@
 import React from 'react';
-import PageLink from "./pageLink";
+import PageLink from "./pageLink/pageLink";
 import classes from "./pagination.pcss";
 
 function pagination(props) {

@@ -3,7 +3,7 @@ import classes from "./card.pcss";
 import CloseIcon from '@material-ui/icons/Close';
 
 function card(props) {
-
+  // if it's party card we show person name - title, and do nothing on click
   let title = null;
   if (props.isParty) title = <h3>{props.title}</h3>;
 

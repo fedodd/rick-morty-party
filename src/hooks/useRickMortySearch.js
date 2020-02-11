@@ -6,9 +6,7 @@ const RICK_MORTY_SEARCH = gql`
     characters(page: $targetPage, filter: { name: $targetName}) {
       info {
         count,
-        pages,
-        next,
-        prev
+        pages
       }
       results {
         id,
@@ -19,11 +17,10 @@ const RICK_MORTY_SEARCH = gql`
   }
 `;
 
-function useRickMortySearch(targetName, deletedPersonsID, targetPage) {
+function useRickMortySearch(targetName, targetPage) {
   const { loading, error, data } = useQuery(RICK_MORTY_SEARCH, {
     variables: { targetName, targetPage },
   });
-  //console.log('loading, error, data', loading, error, data);
 
   return {loading, error, data };
 }

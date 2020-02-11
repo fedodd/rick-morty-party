@@ -13,7 +13,7 @@ const App = () => {
   const [selectedMorty, setMorty] = useState({});
 
   const handlePickPerson = (person) => {
-    // i suggest to check 'rick' with string.toLowerCase().includes('rick'), cause maybe there will be 'RICK' o something like this in the future. same with 'Morty'.
+    // maybe better to check 'rick' with string.toLowerCase().includes('rick'), cause maybe there will be 'RICK' o something like this in the future. same with 'Morty'.
     if (person.name.includes('Rick')) {
       setRick(person);
     } else if (person.name.includes('Morty')) {
@@ -22,7 +22,6 @@ const App = () => {
   }
 
   const handleClosePartyPerson = (person) => {
-
     if (person === 'Rick') {
       setRick({});
     } else if (person === 'Morty') {

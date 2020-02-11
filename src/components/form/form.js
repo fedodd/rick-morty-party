@@ -4,7 +4,6 @@ import _ from 'lodash';
 
 function Form(props) {
 
-  //set value only after it's ready to make api request
   const [value, setValue] = useState('');
 
   // throttle - send value to app component after 300 ms. listen prev value with useRef
