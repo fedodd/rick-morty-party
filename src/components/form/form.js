@@ -1,49 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
+import React, { useState, useEffect, useRef } from 'react';
+import classes from "./form.pcss";
+import _ from 'lodash';
 
-
-const RICK_MORTY_SEARCH = gql`
-  query {
-    characters(filter: { name: "rick" }) {
-      info {
-        count
-      }
-      results {
-        id,
-        name,
-        image
-      }
-    }
-  }
-  `;
-
-const form = () => {
-  const { loading, error, data } = useQuery(RICK_MORTY_SEARCH);
+function Form(props) {
 
   const [value, setValue] = useState('');
-  let result = null;
-  useEffect(() => {
-    // Обновляем заголовок документа с помощью API браузера
-    document.title = `Вы - ${value}`;
 
-    if (loading) result = <p>Loading...</p>;
-    else if (error) result = <p>Error :(</p>;
-    else result = data;
+  // throttle - send value to app component after 300 ms. listen prev value with useRef
+  const throttled = useRef(_.throttle((newValue) => {
+    props.handleChangeInput(newValue);
+  }, 300))
+
+
+  useEffect(() => {
+    throttled.current(value);
   }, [value]);
 
-
-  function handleOnChange(value) {
-    setValue(value);
+  //send changes only if length >2
+  const handleChange = (value) => {
+    if (value.length > 2) {
+      setValue(value);
+    };
   }
-  console.log(result);
 
   return (
-    <div onClick={() => handleOnChange('rick')}>
-      i am form with value: {value}
-      {result}
-    </div>
+    <form
+      onSubmit={event => event.preventDefault()}
+      className={classes.form}>
+      <input
+        className={classes.input}
+        type="text"
+        name="name"
+        onChange={(e) => handleChange(e.target.value)}
+        required >
+      </input>
+    </form>
   );
 };
 
-export default form;
+export default Form;

@@ -10,15 +10,18 @@
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development",
     "build-prod": "webpack -p --mode production",
-    "start": "webpack-dev-server --hot --mode development"
+    "start": "webpack-dev-server --hot --mode development",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.3",
     "@material-ui/core": "^4.9.1",
     "@material-ui/icons": "^4.9.1",
     "apollo-boost": "^0.4.7",
+    "gh-pages": "^2.2.0",
     "graphql": "^14.6.0",
     "lodash": "^4.17.15",
+    "normalize.css": "^8.0.1",
     "postcss-conditionals": "^2.1.0",
     "postcss-mixins": "^6.2.3",
     "postcss-nested": "^4.2.1",
@@ -30,6 +33,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
     "@hot-loader/react-dom": "^16.11.0+4.12.16",
@@ -40,6 +44,7 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react-hooks": "^2.3.0",
+    "file-loader": "^5.0.2",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-template": "^6.2.0",
     "lodash-webpack-plugin": "^0.11.5",
