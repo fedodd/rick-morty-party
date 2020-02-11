@@ -17,7 +17,7 @@ const RICK_MORTY_PAGE_COUNTER = gql`
   }
 `;
 
-function useRickMortyPageCounter(targetName) {
+function useRickMortyPageCounter(targetName, deletedPersonsID) {
   const { loading, error, data } = useQuery(RICK_MORTY_PAGE_COUNTER, {
     variables: { targetName },
   });

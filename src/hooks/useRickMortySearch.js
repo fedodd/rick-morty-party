@@ -19,7 +19,7 @@ const RICK_MORTY_SEARCH = gql`
   }
 `;
 
-function useRickMortySearch(targetName, targetPage) {
+function useRickMortySearch(targetName, deletedPersonsID, targetPage) {
   const { loading, error, data } = useQuery(RICK_MORTY_SEARCH, {
     variables: { targetName, targetPage },
   });

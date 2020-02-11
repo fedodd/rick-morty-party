@@ -27,7 +27,7 @@ function Results(props) {
 
   const [page, setPage] = useState(1);
   // //api request
-  const {pageLoading, pageError, pageData} = useRickMortyPageCounter(props.requestName);
+  const {pageLoading, pageError, pageData} = useRickMortyPageCounter(props.requestName, deletedPersonsID);
   //console.log(pageLoading, pageError, pageData);
 
   if (pageLoading) {
@@ -44,7 +44,7 @@ function Results(props) {
   }
 
 
-  const { loading, error, data } = useRickMortySearch(props.requestName, page);
+  const { loading, error, data } = useRickMortySearch(props.requestName, deletedPersonsID, page);
   if (loading) {
     result = <p>Loading...</p>;
   } else if (error) {
