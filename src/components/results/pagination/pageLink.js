@@ -1,12 +1,11 @@
 import React from 'react';
-import useRickMortySearch from "../../../hooks/useRickMortySearch";
-
+import classes from "./pageLink.pcss";
 function pageLink(props) {
-  //const page = props.page
-  console.log('pagelink ', props);
 
   return (
-    <a onClick={() => props.onSelectPage(props.page)}>
+    <a
+      className={props.isActive ? classes.pageLink + ' ' + classes.is__active : classes.pageLink}
+      onClick={() => props.onSelectPage(props.page)}>
       {props.page}
     </a>
   );
