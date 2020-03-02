@@ -30,17 +30,17 @@ const App = () => {
   }
 
   return (
-      <div className={classes.App}>
-        <Form handleChangeInput={setRequestName}/>
-        <Results
-          requestName={requestName}
-          onPickPerson={handlePickPerson}/>
-        <Party
-          selectedRick={selectedRick}
-          selectedMorty={selectedMorty}
-          onCloseHandler={handleClosePartyPerson}
-          />
-      </div>);
+    <div className={classes.App}>
+      <Form handleChangeInput={setRequestName}/>
+      <Results
+        requestName={requestName}
+        onPickPerson={handlePickPerson}/>
+      <Party
+        selectedRick={selectedRick}
+        selectedMorty={selectedMorty}
+        onCloseHandler={handleClosePartyPerson}
+        />
+    </div>);
 };
 
 export default hot(App);
