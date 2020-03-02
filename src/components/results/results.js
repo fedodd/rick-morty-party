@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useRickMortySearch from "../../hooks/useRickMortySearch.js";
 import useRickMortyPageCounter from "../../hooks/useRickMortyPageCounter.js";
 import _ from 'lodash';
@@ -13,7 +13,6 @@ function Results(props) {
 
   let result = <p>Search results will be shown here.</p>
 
-
   //if request name shorteeer then 2 break api request
   if (props.requestName.length <= 2) {
     return result;
@@ -22,13 +21,17 @@ function Results(props) {
   //deleted persons id array
   const [deletedPersonsID, setDeletedPersonsID] = useState([]);
   const onCloseHandler = (id) => {
-    console.log('close!');
     if (!deletedPersonsID.includes(id)) setDeletedPersonsID([...deletedPersonsID, id])
   }
 
   //pagination
   const [page, setPage] = useState(1);
   let pagePagination = null;
+
+  //reset page when change request
+    useEffect(() => {
+      setPage(1);
+    }, [props.requestName])
 
 
   // count pages of person cards
@@ -38,7 +41,8 @@ function Results(props) {
     result = <p>Loading...</p>;
   } else if (pageError) {
     result = <p>Error! please reload page.</p>;
-  } else if (pageData.characters.info.pages > 1) {
+  } else {
+    if (pageData.characters.info.pages > 1) {
     //add pagination only if it's more then 1 page
      const pages = pageData.characters.info.pages;
      pagePagination = (< Pagination
@@ -46,6 +50,7 @@ function Results(props) {
         currentPage={page}
         requestName={props.requestName}
         onSelectPage={setPage}/>);
+    }
   }
 
   //get persons data
@@ -71,6 +76,8 @@ function Results(props) {
       return acc;
     }, []);
   }
+
+
 
 
   return (
