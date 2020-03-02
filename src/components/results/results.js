@@ -41,16 +41,14 @@ function Results(props) {
     result = <p>Loading...</p>;
   } else if (pageError) {
     result = <p>Error! please reload page.</p>;
-  } else {
-    if (pageData.characters.info.pages > 1) {
+  } else if (pageData.characters.info.pages > 1) {
     //add pagination only if it's more then 1 page
-     const pages = pageData.characters.info.pages;
-     pagePagination = (< Pagination
-        pages={pages}
-        currentPage={page}
-        requestName={props.requestName}
-        onSelectPage={setPage}/>);
-    }
+    const pages = pageData.characters.info.pages;
+    pagePagination = (< Pagination
+      pages={pages}
+      currentPage={page}
+      requestName={props.requestName}
+      onSelectPage={setPage}/>);
   }
 
   //get persons data
@@ -76,9 +74,6 @@ function Results(props) {
       return acc;
     }, []);
   }
-
-
-
 
   return (
     <div className={classes.results}>
