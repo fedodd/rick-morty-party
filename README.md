@@ -1,6 +1,6 @@
-# empty-project
+# rick-morty-party
 
-Empty project.
+Rick and Morty party
 
 ## Building and running on localhost
 
